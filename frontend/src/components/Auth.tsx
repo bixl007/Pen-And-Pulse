@@ -56,7 +56,7 @@ export const Auth = ({ type }: { type: "signup" | "signin" }) => {
                 : "Already have an account?"}
               <Link
                 className="pl-2 underline"
-                to={type === "signin" ? "/signup" : "/signin"}
+                to={type === "signin" ? "/" : "/signin"}
               >
                 {type === "signin" ? "Sign up" : "Sign in"}
               </Link>
@@ -77,7 +77,7 @@ export const Auth = ({ type }: { type: "signup" | "signin" }) => {
             )}
 
             <LabelledInput
-              label="Username"
+              label="Email"
               placeholder="bishal@bixl.com"
               onChange={(e) => {
                 setPostInputs({
