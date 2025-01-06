@@ -5,6 +5,7 @@ import { Blog } from "./pages/Blog";
 import "./App.css";
 import { Blogs } from "./pages/Blogs";
 import { Publish } from "./pages/Publish";
+import Footer from "./components/Footer";
 
 function App() {
   return (
@@ -18,7 +19,9 @@ function App() {
           <Route path="/publish" element={<Publish />} />
         </Routes>
       </BrowserRouter>
+      <Footer />
     </>
+
   );
 }
 

@@ -1,0 +1,17 @@
+.social-icon {
+    color: #fff;
+    transition: transform 0.3s ease, color 0.3s ease;
+  }
+  
+  .social-icon:hover {
+    color: #1da1f2; /* Example: Color change for Twitter */
+    transform: scale(1.2); /* Slight zoom effect */
+  }
+  
+  /* Example colors for each icon */
+  .social-icon:hover:nth-child(1) { color: #3b5998; } /* Facebook */
+  .social-icon:hover:nth-child(2) { color: #1da1f2; } /* Twitter */
+  .social-icon:hover:nth-child(3) { color: #e4405f; } /* Instagram */
+  .social-icon:hover:nth-child(4) { color: #0077b5; } /* LinkedIn */
+  .social-icon:hover:nth-child(5) { color: #333; } /* GitHub */
+  

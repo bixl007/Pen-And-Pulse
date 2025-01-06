@@ -1,0 +1,15 @@
+{
+  "name": "pen-and-pulse",
+  "version": "1.0.0",
+  "description": "Pen-And-Pulse is a dynamic blog platform that allows users to create, post, and read blogs. Our aim is to provide a seamless and engaging experience for bloggers and readers alike.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "react-icons": "^5.4.0"
+  }
+}
