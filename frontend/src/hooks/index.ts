@@ -6,11 +6,11 @@ export interface Blog {
   content: string;
   title: string;
   id: number;
-  author: {
-    name: string;
+  author?: {
+    name?: string;
   };
+  createdAt: Date; // Change to string to match API response
 }
-
 
 export const useBlogs = () => {
   const [loading, setLoading] = useState(true);
@@ -20,38 +20,46 @@ export const useBlogs = () => {
     axios
       .get(`${BACKEND_URL}/api/v1/blog/bulk`, {
         headers: {
-          Authorization: localStorage.getItem("token"),
+          Authorization: localStorage.getItem("token") || "",
         },
       })
       .then((response) => {
-        setBlogs(response.data.blogs);
+        setBlogs(
+          response.data.blogs.map((blog: Blog) => ({
+            ...blog,
+            createdAt: new Date(blog.createdAt), // Ensure it's a Date object
+          }))
+        );
         setLoading(false);
-      });
+      })
+      .catch(() => setLoading(false));
   }, []);
-  return {
-    loading,
-    blogs,
-  };
+
+  return { loading, blogs };
 };
+
 
 export const useBlog = ({ id }: { id: string }) => {
   const [loading, setLoading] = useState(true);
-  const [blog, setBlog] = useState<Blog>();
+  const [blog, setBlog] = useState<Blog | null>(null);
 
   useEffect(() => {
     axios
       .get(`${BACKEND_URL}/api/v1/blog/${id}`, {
         headers: {
-          Authorization: localStorage.getItem("token"),
+          Authorization: localStorage.getItem("token") || "",
         },
       })
       .then((response) => {
-        setBlog(response.data.blog);
+        const fetchedBlog = response.data.blog;
+        setBlog({
+          ...fetchedBlog,
+          createdAt: new Date(fetchedBlog.createdAt), // Convert to Date
+        });
         setLoading(false);
-      });
-  }, []);
-  return {
-    loading,
-    blog,
-  };
+      })
+      .catch(() => setLoading(false));
+  }, [id]);
+
+  return { loading, blog };
 };
