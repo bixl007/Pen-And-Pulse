@@ -1,5 +1,4 @@
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { Avatar } from "./BlogCard";
 
 export const Appbar = () => {
   const location = useLocation();
@@ -9,6 +8,8 @@ export const Appbar = () => {
     localStorage.removeItem("token");
     navigate("/");
   };
+
+  
 
   return (
     <div className="border-b flex items-center justify-between p-2 px-4 ">
@@ -33,8 +34,8 @@ export const Appbar = () => {
             Logout
           </button>
         ) : null}
-        <div>
-          <Avatar name="A" />
+        <div className="w-10 h-10">
+          <img src="../../public/user.png" alt="a" />
         </div>
       </div>
     </div>
