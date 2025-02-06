@@ -35,7 +35,7 @@ export const Appbar = () => {
           </button>
         ) : null}
         <div className="w-10 h-10">
-          <img src="../../public/user.png" alt="a" />
+          <img src="https://postimg.cc/MnNBKYGR" alt="a" />
         </div>
       </div>
     </div>
