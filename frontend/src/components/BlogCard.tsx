@@ -25,7 +25,7 @@ export const BlogCard = ({
         <div className="flex justify-center flex-col px-2 ">
           <Circle />
         </div>
-        <div className=" font-thin flex justify-center flex-col ">{publishedDate}</div>
+        <div className=" font-light flex justify-center flex-col ">{publishedDate}</div>
       </div>
       <div className="text-xl font-semibold py-4">{title}</div>
       <div className="text-md font-extralight">{content.slice(0, 200) + "..."}</div>
