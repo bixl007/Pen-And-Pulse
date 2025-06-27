@@ -1,6 +1,5 @@
 import BlurText from "@/blocks/TextAnimations/BlurText/BlurText";
 import { Nav } from "@/components/Nav";
-import { useState, useEffect } from "react";
 import TrueFocus from "@/blocks/TextAnimations/TrueFocus/TrueFocus";
 import LandingButton from "@/components/LandingButton";
 import ConditionalBlobCursor from "@/components/ConditionalBlobCursor";

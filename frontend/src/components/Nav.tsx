@@ -12,8 +12,13 @@ import {
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
+interface NavItem {
+  link: string;
+  name: string;
+}
+
 export function Nav() {
-  const navItems = [
+  const navItems: NavItem[] = [
     
   ];
 
@@ -49,7 +54,6 @@ export function Nav() {
 
           <MobileNavMenu
             isOpen={isMobileMenuOpen}
-            onClose={() => setIsMobileMenuOpen(false)}
           >
             {navItems.map((item, idx) => (
               <a

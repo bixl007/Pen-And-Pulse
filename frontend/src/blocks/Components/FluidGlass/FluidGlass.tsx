@@ -11,6 +11,8 @@ import {
   useFrame,
   useThree,
   ThreeElements,
+  RootState,
+  ThreeEvent,
 } from "@react-three/fiber";
 import {
   useFBO,
@@ -39,6 +41,18 @@ interface FluidGlassProps {
   lensProps?: ModeProps;
   barProps?: ModeProps;
   cubeProps?: ModeProps;
+}
+
+declare global {
+  namespace JSX {
+    interface IntrinsicElements {
+      group: ThreeElements["group"];
+      mesh: ThreeElements["mesh"];
+      planeGeometry: ThreeElements["planeGeometry"];
+      meshBasicMaterial: ThreeElements["meshBasicMaterial"];
+      meshTransmissionMaterial: ThreeElements["meshTransmissionMaterial"];
+    }
+  }
 }
 
 export default function FluidGlass({
@@ -118,7 +132,7 @@ const ModeWrapper = memo(function ModeWrapper({
     geoWidthRef.current = geo.boundingBox!.max.x - geo.boundingBox!.min.x || 1;
   }, [nodes, geometryKey]);
 
-  useFrame((state, delta) => {
+  useFrame((state: RootState, delta: number) => {
     const { gl, viewport, pointer, camera } = state;
     const v = viewport.getCurrentViewport(camera, [0, 0, 15]);
 
@@ -236,7 +250,7 @@ function Bar({ modeProps = {}, ...p }: { modeProps?: ModeProps } & MeshProps) {
 
 function NavItems({ items }: { items: NavItem[] }) {
   const group = useRef<THREE.Group>(null!);
-  const { viewport, camera } = useThree();
+  const { camera } = useThree();
 
   const DEVICE = {
     mobile: { max: 639, spacing: 0.2, fontSize: 0.035 },
@@ -262,12 +276,12 @@ function NavItems({ items }: { items: NavItem[] }) {
 
   const { spacing, fontSize } = DEVICE[device];
 
-  useFrame(() => {
+  useFrame((state: RootState) => {
     if (!group.current) return;
-    const v = viewport.getCurrentViewport(camera, [0, 0, 15]);
+    const v = state.viewport.getCurrentViewport(camera, [0, 0, 15]);
     group.current.position.set(0, -v.height / 2 + 0.2, 15.1);
 
-    group.current.children.forEach((child, i) => {
+    group.current.children.forEach((child: THREE.Object3D, i: number) => {
       child.position.x = (i - (items.length - 1) / 2) * spacing;
     });
   });
@@ -294,7 +308,7 @@ function NavItems({ items }: { items: NavItem[] }) {
           outlineColor="#000"
           outlineOpacity={0.5}
           renderOrder={10}
-          onClick={(e) => {
+          onClick={(e: ThreeEvent<MouseEvent>) => {
             e.stopPropagation();
             handleNavigate(link);
           }}
@@ -311,7 +325,7 @@ function NavItems({ items }: { items: NavItem[] }) {
 function Images() {
   const group = useRef<ZoomGroup>(null!);
   const data = useScroll();
-  const { height } = useThree((s) => s.viewport);
+  const { height } = useThree((s: RootState) => s.viewport);
 
   useFrame(() => {
     group.current.children[0].material.zoom = 1 + data.range(0, 1 / 3) / 3;
