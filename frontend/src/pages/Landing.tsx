@@ -4,6 +4,10 @@ import TrueFocus from "@/blocks/TextAnimations/TrueFocus/TrueFocus";
 import LandingButton from "@/components/LandingButton";
 import ConditionalBlobCursor from "@/components/ConditionalBlobCursor";
 import ScrollVelocity from "@/blocks/TextAnimations/ScrollVelocity/ScrollVelocity";
+import TestimonialSection from "@/components/TestimonialSection";
+import { WorldMapComp } from "@/components/WorldMapComp";
+import { HeroScrollDemo } from "@/components/HeroScroll";
+import Footer from "@/components/Footer";
 
 const Landing = () => {
 
@@ -247,6 +251,10 @@ const Landing = () => {
             </ul>
           </div>
         </div>
+        <HeroScrollDemo />
+        <WorldMapComp />
+        <TestimonialSection />
+        <Footer />
       </div>
     </ConditionalBlobCursor>
   );
