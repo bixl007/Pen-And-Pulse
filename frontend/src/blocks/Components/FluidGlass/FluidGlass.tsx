@@ -50,7 +50,6 @@ declare global {
       mesh: ThreeElements["mesh"];
       planeGeometry: ThreeElements["planeGeometry"];
       meshBasicMaterial: ThreeElements["meshBasicMaterial"];
-      meshTransmissionMaterial: ThreeElements["meshTransmissionMaterial"];
     }
   }
 }
