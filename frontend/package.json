@@ -11,8 +11,8 @@
   },
   "dependencies": {
     "@bixl/blog-common": "^1.0.1",
-    "@react-three/drei": "^10.3.0",
-    "@react-three/fiber": "^9.1.2",
+    "@react-three/drei": "^9.108.3",
+    "@react-three/fiber": "^8.16.8",
     "@tabler/icons-react": "^3.34.0",
     "@types/three": "^0.177.0",
     "axios": "^1.7.2",
